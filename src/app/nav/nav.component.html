@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">Social APP</a>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
       <li class="nav-item">
         <a class="nav-link" href="#">Friends</a>
       </li>
@@ -11,13 +11,37 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Messages</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="logout()">Logout</a>
+      </li>
     </ul>
-    <form #myLoginForm="ngForm" class="form-inline mt-2 mt-md-0" autocomplete="off" (ngSubmit)="login()">
+
+    <div class="dropdown">
+
+    </div>
+
+    <div class="dropdown" *ngIf="loggedIn" dropdown>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" dropdownToggle>
+        Welcome User
+      </button>
+      <div class="dropdown-menu" *dropdownMenu>
+        <a class="dropdown-item" href="#">Edit Profile</a>
+        <div class="dropdown-dividerform-control"></div>
+        <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+    <form #myLoginForm="ngForm" class="loginForm" autocomplete="off" (ngSubmit)="login()" *ngIf="!loggedIn">
       <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username"
         [(ngModel)]="model.username">
-      <input class="form-control mr-sm-2" type="text" placeholder="Password" name="password"
+      <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password"
         [(ngModel)]="model.password">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
     </form>
   </div>
 </nav>
+
+
+<!-- "node_modules/bootstrap/dist/css/bootstrap.min.css"
+"./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" -->

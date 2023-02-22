@@ -20,4 +20,7 @@ export class NavComponent {
     this.loggedIn = true;
     console.log(this.loggedIn);
   }
+  logout() {
+    this.loggedIn = false;
+  }
 }

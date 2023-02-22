@@ -1,0 +1,7 @@
+.loginForm {
+  display: flex;
+  flex-direction: row;
+} 
+.form-control{
+  margin-right : 10px;
+}
