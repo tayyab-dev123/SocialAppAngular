@@ -26,13 +26,12 @@ export class AccountService {
       })
     );
   }
-
-  setCurrentUser(user: User) {
-    this.CurrentUserSource.next(user);
-  }
-
   logout() {
     localStorage.removeItem('user');
     this.CurrentUserSource.next(null);
+  }
+
+  setCurrentUser(user: User) {
+    this.CurrentUserSource.next(user);
   }
 }
