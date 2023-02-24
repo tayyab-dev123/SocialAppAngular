@@ -11,12 +11,10 @@ import { AccountService } from './_Services/Account/account.service';
 export class AppComponent {
   title = 'SocialAppAngular';
   constructor(
-    private http: HttpClient,
     private accountService: AccountService
   ) {}
   users: any;
   ngOnInit() {
-    this.getUser();
     this.setCurrentUser();
   }
 
@@ -25,14 +23,5 @@ export class AppComponent {
     this.accountService.setCurrentUser(user);
   }
 
-  getUser() {
-    this.http.get('https://localhost:7278/api/Users').subscribe(
-      (response) => {
-        this.users = response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+
 }
