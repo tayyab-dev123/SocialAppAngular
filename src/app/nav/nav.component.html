@@ -1,19 +1,17 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" routerLink="home">Social APP</a>
+    <a class="navbar-brand" routerLink="/">Social APP</a>
     <ul class="navbar-nav mr-auto" *ngIf="accountService.CurrentUser$| async">
       <li class="nav-item">
-        <a class="nav-link" href="#">Friends</a>
+        <a class="nav-link" routerLink="/members" routerLinkActive="active">Friends</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Lists</a>
+        <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Messages</a>
+        <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="logout()">Logout</a>
-      </li>
+
     </ul>
 
     <div class="dropdown">
@@ -33,7 +31,7 @@
     </div>
 
     <form #myLoginForm="ngForm" class="loginForm" autocomplete="off" (ngSubmit)="login()"
-     *ngIf="!(accountService.CurrentUser$ | async)">
+      *ngIf="!(accountService.CurrentUser$ | async)">
       <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username"
         [(ngModel)]="model.username">
       <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password"
