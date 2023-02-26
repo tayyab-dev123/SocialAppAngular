@@ -15,9 +15,19 @@ import { MemberDetalsComponent } from './members/member-detals/member-detals.com
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent, MemberDetalsComponent, MemberListComponent, MessagesComponent, ListsComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    RegisterComponent,
+    MemberDetalsComponent,
+    MemberListComponent,
+    MessagesComponent,
+    ListsComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -25,7 +35,10 @@ import { ListsComponent } from './lists/lists.component';
     FormsModule,
     FontAwesomeModule,
     BsDropdownModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

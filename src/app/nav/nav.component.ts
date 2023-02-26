@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../_Model/User';
 import { AccountService } from '../_Services/Account/account.service';
@@ -10,7 +11,11 @@ import { AccountService } from '../_Services/Account/account.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent {
-  constructor(public accountService: AccountService, private router: Router) {}
+  constructor(
+    public accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
   model: any = {};
   loggedIn: boolean;
 
@@ -22,6 +27,7 @@ export class NavComponent {
       this.router.navigateByUrl('/members'),
         (error) => {
           console.log(error);
+          this.toastr.error(error.error);
         };
     });
   }

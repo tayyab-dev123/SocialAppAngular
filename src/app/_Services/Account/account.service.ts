@@ -16,7 +16,7 @@ export class AccountService {
   CurrentUser$ = this.CurrentUserSource.asObservable();
 
   login(model: any) {
-    return this.http.post(this.baseURL + 'account/login', model).pipe(
+    return this.http.post<User>(this.baseURL + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
         if (user) {
@@ -26,6 +26,18 @@ export class AccountService {
       })
     );
   }
+
+  register(model: any) {
+    return this.http.post(this.baseURL + 'account/register', model).pipe(
+      map((user: User) => {
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.CurrentUserSource.next(user);
+        }
+      })
+    );
+  }
+
   logout() {
     localStorage.removeItem('user');
     this.CurrentUserSource.next(null);

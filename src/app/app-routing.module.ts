@@ -5,12 +5,13 @@ import { ListsComponent } from './lists/lists.component';
 import { MemberDetalsComponent } from './members/member-detals/member-detals.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AuthGuard } from './_Guard/authguard.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'members', component: MemberDetalsComponent },
   { path: 'member/:id', component: MemberListComponent },
-  { path: 'messages', component: MessagesComponent },
+  { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
   { path: 'lists', component: ListsComponent },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
 ];
