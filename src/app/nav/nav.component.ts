@@ -12,7 +12,7 @@ import { AccountService } from '../_Services/Account/account.service';
 })
 export class NavComponent {
   constructor(
-    public accountService: AccountService,
+    public accountService:AccountService,
     private router: Router,
     private toastr: ToastrService
   ) {}

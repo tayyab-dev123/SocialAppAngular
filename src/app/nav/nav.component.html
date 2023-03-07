@@ -1,17 +1,21 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">
-    <a class="navbar-brand" routerLink="/" *ngIf="accountService.CurrentUser$| async">Social APP</a>
+    <a class="navbar-brand" routerLink="/" >Social APP</a>
     <ul class="navbar-nav mr-auto">
+      <ng-container *ngIf="accountService.CurrentUser$| async">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">Friends</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
+        </li>
+      </ng-container>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/members" routerLinkActive="active">Friends</a>
+        <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
-      </li>
-
     </ul>
 
     <div class="dropdown">
@@ -21,7 +25,7 @@
     <div class="dropdown" *ngIf="(accountService.CurrentUser$| async) as User " dropdown>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false" dropdownToggle>
-        Welcome {{User.userName | titlecase}}
+        Welcome {{User.username}}
       </button>
       <div class="dropdown-menu" *dropdownMenu>
         <a class="dropdown-item" href="#">Edit Profile</a>

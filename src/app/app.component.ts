@@ -10,9 +10,7 @@ import { AccountService } from './_Services/Account/account.service';
 })
 export class AppComponent {
   title = 'SocialAppAngular';
-  constructor(
-    private accountService: AccountService
-  ) {}
+  constructor(private accountService: AccountService) {}
   users: any;
   ngOnInit() {
     this.setCurrentUser();
@@ -22,6 +20,4 @@ export class AppComponent {
     const user: User = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
-
-
 }
