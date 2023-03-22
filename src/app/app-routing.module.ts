@@ -21,7 +21,7 @@ const routes: Routes = [
       {
         path: 'messages',
         component: MessagesComponent,
-        
+
       },
       {path:'errors', component: TestErrorsComponent},
       { path: 'lists', component: ListsComponent },
