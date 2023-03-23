@@ -9,25 +9,22 @@ import { environment } from 'src/environments/environment.development';
 })
 export class MembersService {
   //Getting token from local storage for authentication
-  httpOptions = {
-    headers: new HttpHeaders({
-      Authentication:
-        'Bearer ' + JSON.parse(localStorage.getItem('user')).token,
-    }),
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     Authentication:
+  //       'Bearer ' + JSON.parse(localStorage.getItem('user')).token,
+  //   }),
+  // };
 
   baseUrl = environment.apiURL;
 
   constructor(private http: HttpClient) {}
 
   getMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>(this.baseUrl + 'users', this.httpOptions);
+    return this.http.get<Member[]>(this.baseUrl + 'users');
   }
 
   getMember(username: string) {
-    return this.http.get<Member>(
-      this.baseUrl + 'user/' + username,
-      this.httpOptions
-    );
+    return this.http.get<Member>(this.baseUrl + 'user/' + username);
   }
 }

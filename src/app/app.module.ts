@@ -1,6 +1,10 @@
 import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +22,8 @@ import { ListsComponent } from './lists/lists.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './_Module/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { MemberCardComponent } from './member-card/member-card.component';
+import { JwtInterceptorInterceptor } from './_Interceptor/jwt-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,7 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     MessagesComponent,
     ListsComponent,
     TestErrorsComponent,
+    MemberCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,13 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
